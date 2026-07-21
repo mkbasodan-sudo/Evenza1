@@ -1,0 +1,8 @@
+(function(){'use strict';
+window.Dashboard=window.Dashboard||{};
+Dashboard.Modal={
+ init(){this.el=document.getElementById('eventModal');this.body=document.getElementById('modalBody');document.getElementById('modalClose').addEventListener('click',()=>this.close());this.el.addEventListener('click',e=>{if(e.target===this.el)this.close()});document.addEventListener('keydown',e=>{if(e.key==='Escape')this.close()})},
+ open(event){const m=Dashboard.state.mapping;const title=Dashboard.value(event,m.name)||Dashboard.t('unnamedEvent');const status=Dashboard.getStatus(event);document.getElementById('modalTitle').textContent=title;document.getElementById('modalSubtitle').textContent=[Dashboard.value(event,m.city),Dashboard.value(event,m.country),Dashboard.formatDate(Dashboard.value(event,m.startDate))].filter(Boolean).join(' • ');const badge=document.getElementById('modalStatus');badge.textContent=Dashboard.statusLabel(status);badge.className='event-badge status-'+status;this.body.innerHTML='';const grid=document.createElement('div');grid.className='details-grid';Dashboard.state.headers.forEach(h=>{let v=event[h];if(v===null||v===undefined||v==='')return;const row=document.createElement('div');row.className='detail-row';const label=document.createElement('label');label.textContent=h;const value=document.createElement('div');if(/^https?:\/\//i.test(String(v))){const a=document.createElement('a');a.href=v;a.target='_blank';a.rel='noopener';a.textContent=v;value.appendChild(a)}else value.textContent=Dashboard.formatValue(v,h);row.append(label,value);grid.appendChild(row)});this.body.appendChild(grid);this.el.classList.remove('hidden');document.body.style.overflow='hidden'},
+ close(){this.el.classList.add('hidden');document.body.style.overflow='auto'}
+};
+})();
