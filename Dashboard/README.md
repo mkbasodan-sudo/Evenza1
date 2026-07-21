@@ -48,3 +48,16 @@
 ## الخصوصية
 
 لا يتم رفع أي ملف إلى الإنترنت. تتم القراءة والمعالجة والتصدير داخل المتصفح فقط.
+
+## Version 2.1 updates
+- Complete Arabic/English interface translation, including previously hard-coded headings, descriptions, placeholders, status text, filter counters, and page title.
+- Automatic RTL/LTR layout switching with saved language preference.
+- Improved mobile navigation drawer and backdrop.
+- Mobile-friendly KPI cards, filters, charts, calendar, modal, and event list.
+- Event table automatically changes to readable card rows on small screens.
+- Optimized for screens from 320px wide and above.
+
+
+## v2.2 update
+- Replaced the obsolete Offline Ready label with a bilingual Live Database indicator.
+- The sidebar event count is generated dynamically from the loaded dataset.

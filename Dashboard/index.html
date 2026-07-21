@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Offline Global Events Intelligence Dashboard">
-  <title>EventScope — لوحة ذكاء الإيفنتات</title>
+  <title data-i18n="documentTitle">EventScope — لوحة ذكاء الإيفنتات</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -22,12 +22,13 @@
       <div class="sidebar-card">
         <span class="sidebar-card-icon">✦</span>
         <strong>Events Intelligence</strong>
-        <p>قاعدة بيانات موحّدة للتحليل والتخطيط والمتابعة.</p>
+        <p data-i18n="sidebarDescription">قاعدة بيانات موحّدة للتحليل والتخطيط والمتابعة.</p>
       </div>
       <div class="sidebar-foot">
-        <div class="data-status"><span class="status-dot"></span><div><b data-i18n="offlineReady">جاهز دون إنترنت</b><small id="recordCountSide">0 Events</small></div></div>
+        <div class="data-status live-database"><span class="status-dot" aria-hidden="true"></span><div><b data-i18n="liveDatabase">قاعدة بيانات مباشرة</b><small id="recordCountSide">0 فعالية عالمية</small></div></div>
       </div>
     </aside>
+    <button class="sidebar-backdrop" id="sidebarBackdrop" aria-label="Close navigation"></button>
 
     <main class="main-content">
       <header class="topbar">
@@ -42,17 +43,17 @@
         </div>
       </header>
 
-      <section class="error-banner hidden" id="errorBanner" role="alert"><strong id="errorTitle">خطأ</strong><span id="errorMessage"></span><button id="dismissError">×</button></section>
+      <section class="error-banner hidden" id="errorBanner" role="alert"><strong id="errorTitle" data-i18n="errorLabel">خطأ</strong><span id="errorMessage"></span><button id="dismissError">×</button></section>
 
       <section id="overviewView" class="view active-view">
         <section class="welcome-banner">
           <div class="welcome-content">
             <span class="eyebrow">GLOBAL EVENTS INTELLIGENCE</span>
-            <h2>كل الإيفنتات، في لوحة واحدة واضحة.</h2>
-            <p>تابع الاتجاهات، استكشف الأسواق، واعثر على أهم الفرص القادمة من قاعدة بياناتك مباشرة.</p>
+            <h2 data-i18n="heroTitle">كل الإيفنتات، في لوحة واحدة واضحة.</h2>
+            <p data-i18n="heroDescription">تابع الاتجاهات، استكشف الأسواق، واعثر على أهم الفرص القادمة من قاعدة بياناتك مباشرة.</p>
             <div class="welcome-actions">
-              <button class="primary-btn" data-go-view="events">استعراض الإيفنتات <span>←</span></button>
-              <button class="ghost-btn" id="heroFilterBtn">تصفية النتائج</button>
+              <button class="primary-btn" data-go-view="events"><span data-i18n="browseEvents">استعراض الإيفنتات</span> <span class="direction-arrow">←</span></button>
+              <button class="ghost-btn" id="heroFilterBtn" data-i18n="filterResults">تصفية النتائج</button>
             </div>
           </div>
           <div class="welcome-visual" aria-hidden="true">
@@ -68,7 +69,7 @@
             <div class="filter-actions"><span class="active-filter-count" id="activeFilterCount">0 نشط</span><button class="text-btn" id="resetFilters" data-i18n="reset">إعادة التعيين</button><button class="collapse-btn" id="collapseFilters" aria-label="Collapse filters">⌃</button></div>
           </div>
           <div class="filters-grid" id="filtersGrid">
-            <label class="search-field"><span data-i18n="search">البحث</span><div class="input-shell"><i>⌕</i><input id="filterSearch" type="search" placeholder="ابحث باسم الإيفنت..."></div></label>
+            <label class="search-field"><span data-i18n="search">البحث</span><div class="input-shell"><i>⌕</i><input id="filterSearch" type="search" data-i18n-placeholder="searchPlaceholder" placeholder="ابحث باسم الإيفنت..."></div></label>
             <label><span data-i18n="year">السنة</span><select id="filterYear"></select></label>
             <label><span data-i18n="month">الشهر</span><select id="filterMonth"></select></label>
             <label><span data-i18n="country">الدولة</span><select id="filterCountry"></select></label>
@@ -79,7 +80,7 @@
           </div>
         </section>
 
-        <div class="section-heading"><div><span class="eyebrow">PERFORMANCE SNAPSHOT</span><h2>ملخص قاعدة البيانات</h2></div><span class="live-indicator"><i></i> بيانات مباشرة</span></div>
+        <div class="section-heading"><div><span class="eyebrow">PERFORMANCE SNAPSHOT</span><h2 data-i18n="databaseSummary">ملخص قاعدة البيانات</h2></div><span class="live-indicator"><i></i><span data-i18n="liveData">بيانات مباشرة</span></span></div>
         <div class="kpi-grid" id="kpiGrid">
           <article class="kpi-card kpi-primary"><div class="kpi-top"><div class="kpi-icon">◆</div><span class="kpi-trend">100%</span></div><span data-i18n="totalEvents">إجمالي الإيفنتات</span><strong id="kpiTotal">0</strong><small id="kpiTotalHint">—</small><div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
           <article class="kpi-card kpi-success"><div class="kpi-top"><div class="kpi-icon">↗</div><span class="kpi-trend">NEXT</span></div><span data-i18n="upcomingEvents">الإيفنتات القادمة</span><strong id="kpiUpcoming">0</strong><small data-i18n="fromToday">من تاريخ اليوم</small><div class="mini-progress"><i style="width:72%"></i></div></article>
@@ -90,9 +91,9 @@
           <article class="kpi-card compact"><div class="kpi-icon">▣</div><div><span data-i18n="eventTypes">أنواع الإيفنتات</span><strong id="kpiTypes">0</strong><small data-i18n="uniqueValues">قيم فريدة</small></div></article>
         </div>
 
-        <div class="section-heading chart-section-heading"><div><span class="eyebrow">VISUAL ANALYTICS</span><h2>تحليل الإيفنتات</h2></div><span class="chart-tip">مرّر المؤشر فوق الشارت لعرض القيمة</span></div>
+        <div class="section-heading chart-section-heading"><div><span class="eyebrow">VISUAL ANALYTICS</span><h2 data-i18n="eventsAnalytics">تحليل الإيفنتات</h2></div><span class="chart-tip" data-i18n="chartTip">مرّر المؤشر فوق الشارت لعرض القيمة</span></div>
         <div class="dashboard-grid">
-          <article class="panel wide chart-panel"><div class="panel-head"><div><span class="panel-kicker">TREND</span><h3 data-i18n="eventsByMonth">الإيفنتات حسب الشهر</h3><p data-i18n="monthlyTrend">الاتجاه الزمني للإيفنتات</p></div><span class="panel-chip">12 شهر</span></div><div class="chart-wrap chart-large"><canvas id="chartMonth"></canvas><div class="chart-tooltip" id="tip-chartMonth"></div></div></article>
+          <article class="panel wide chart-panel"><div class="panel-head"><div><span class="panel-kicker">TREND</span><h3 data-i18n="eventsByMonth">الإيفنتات حسب الشهر</h3><p data-i18n="monthlyTrend">الاتجاه الزمني للإيفنتات</p></div><span class="panel-chip" data-i18n="twelveMonths">12 شهر</span></div><div class="chart-wrap chart-large"><canvas id="chartMonth"></canvas><div class="chart-tooltip" id="tip-chartMonth"></div></div></article>
           <article class="panel chart-panel"><div class="panel-head"><div><span class="panel-kicker">STATUS</span><h3 data-i18n="statusDistribution">توزيع الحالات</h3><p data-i18n="currentStatus">الحالة وفق التاريخ</p></div></div><div class="chart-wrap chart-small"><canvas id="chartStatus"></canvas><div class="chart-tooltip" id="tip-chartStatus"></div></div></article>
           <article class="panel chart-panel"><div class="panel-head"><div><span class="panel-kicker">MARKETS</span><h3 data-i18n="eventsByCountry">حسب الدولة</h3><p data-i18n="topTen">أعلى 10</p></div></div><div class="chart-wrap"><canvas id="chartCountry"></canvas><div class="chart-tooltip" id="tip-chartCountry"></div></div></article>
           <article class="panel chart-panel"><div class="panel-head"><div><span class="panel-kicker">CITIES</span><h3 data-i18n="eventsByCity">حسب المدينة</h3><p data-i18n="topTen">أعلى 10</p></div></div><div class="chart-wrap"><canvas id="chartCity"></canvas><div class="chart-tooltip" id="tip-chartCity"></div></div></article>
@@ -104,7 +105,7 @@
       </section>
 
       <section id="calendarView" class="view">
-        <div class="view-intro"><span class="eyebrow">CALENDAR VIEW</span><h2>استعرض الإيفنتات زمنيًا</h2><p>اضغط على أي إيفنت لعرض كامل التفاصيل.</p></div>
+        <div class="view-intro"><span class="eyebrow">CALENDAR VIEW</span><h2 data-i18n="calendarIntroTitle">استعرض الإيفنتات زمنيًا</h2><p data-i18n="calendarIntroDescription">اضغط على أي إيفنت لعرض كامل التفاصيل.</p></div>
         <article class="panel calendar-panel">
           <div class="calendar-toolbar"><button class="icon-btn" id="calPrev">‹</button><h2 id="calendarTitle"></h2><button class="icon-btn" id="calNext">›</button><button class="text-btn" id="calToday" data-i18n="today">اليوم</button></div>
           <div class="calendar-weekdays" id="calendarWeekdays"></div><div class="calendar-grid" id="calendarGrid"></div>
@@ -112,9 +113,9 @@
       </section>
 
       <section id="eventsView" class="view">
-        <div class="view-intro"><span class="eyebrow">EVENT EXPLORER</span><h2>استكشف قاعدة البيانات</h2><p>رتّب البيانات، خصّص الأعمدة، وصدّر النتائج التي تحتاجها.</p></div>
+        <div class="view-intro"><span class="eyebrow">EVENT EXPLORER</span><h2 data-i18n="explorerTitle">استكشف قاعدة البيانات</h2><p data-i18n="explorerDescription">رتّب البيانات، خصّص الأعمدة، وصدّر النتائج التي تحتاجها.</p></div>
         <article class="panel table-panel">
-          <div class="table-toolbar"><div><h2 data-i18n="eventsTable">جدول الإيفنتات</h2><p id="tableResultCount">0</p></div><div class="table-actions"><button class="action-btn" id="columnsBtn" data-i18n="columns">الأعمدة</button><button class="action-btn" id="exportXlsx" data-i18n="exportExcel">Excel</button><button class="action-btn" id="exportCsv">CSV</button><button class="action-btn" id="printTable" data-i18n="print">طباعة</button></div></div>
+          <div class="table-toolbar"><div><h2 data-i18n="eventsTable">جدول الإيفنتات</h2><p id="tableResultCount">0</p></div><div class="table-actions"><button class="action-btn" id="columnsBtn" data-i18n="columns">الأعمدة</button><button class="action-btn" id="exportXlsx" data-i18n="exportExcel">Excel</button><button class="action-btn" id="exportCsv" data-i18n="exportCsv">CSV</button><button class="action-btn" id="printTable" data-i18n="print">طباعة</button></div></div>
           <div class="column-picker hidden" id="columnPicker"></div><div class="table-scroll"><table id="eventsTable"><thead></thead><tbody></tbody></table></div>
           <div class="pagination"><button id="pagePrev">‹</button><span id="pageInfo">1 / 1</span><button id="pageNext">›</button><select id="pageSize"><option>10</option><option selected>25</option><option>50</option><option>100</option></select></div>
         </article>
