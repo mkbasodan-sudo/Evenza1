@@ -61,3 +61,10 @@
 ## v2.2 update
 - Replaced the obsolete Offline Ready label with a bilingual Live Database indicator.
 - The sidebar event count is generated dynamically from the loaded dataset.
+
+
+## Version 2.3 updates
+
+- Removed the public Excel upload control; the dashboard now uses only the embedded production dataset.
+- Fixed the mobile sidebar drawer in both English/LTR and Arabic/RTL modes.
+- Added a fixed year filter range from 2026 through 2030.
